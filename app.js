@@ -91,6 +91,7 @@ const game = (() => {
     const marker = currentPlayer.getMarker();
     gameBoard.makeMove(index, marker);
     squaresEvents[index].textContent = marker;
+    playerDisplay.textContent = currentPlayer.getName();
   };
 
   return {
@@ -110,6 +111,7 @@ const game = (() => {
 const mainBoard = document.getElementById('main-board');
 const resetBtn = document.getElementById('reset');
 const playerDisplay = document.getElementById('player-display');
+playerDisplay.textContent = game.currentPlayer.getName();
 
 game.renderBoard();
 
@@ -126,5 +128,3 @@ resetBtn.addEventListener('click', () => {
   game.restart();
   squaresEvents.forEach((el) => (el.textContent = ''));
 });
-
-playerDisplay.textContent = `${game.currentPlayer.getName()} with the ${game.currentPlayer.getMarker()}'s`;
