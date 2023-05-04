@@ -8,7 +8,6 @@ const gameBoard = (() => {
       board[index] = marker;
       return true;
     }
-    return false;
   };
 
   const clearBoard = () => {
@@ -71,14 +70,11 @@ const game = (() => {
     if (!board.includes('')) {
       return 'tie';
     }
-
-    return false;
   };
 
   const restart = () => {
     gameBoard.clearBoard();
     currentPlayer = playerOne;
-    gameOver = false;
   };
 
   const renderBoard = () => {
@@ -91,6 +87,12 @@ const game = (() => {
     });
   };
 
+  const handleSqclick = (index) => {
+    const marker = currentPlayer.getMarker();
+    gameBoard.makeMove(index, marker);
+    squaresEvents[index].textContent = marker;
+  };
+
   return {
     playerOne,
     playerTwo,
@@ -100,6 +102,7 @@ const game = (() => {
     gameOver,
     restart,
     renderBoard,
+    handleSqclick,
   };
 })();
 
@@ -114,8 +117,8 @@ const squaresEvents = document.querySelectorAll('.square');
 
 squaresEvents.forEach((btns, i) => {
   btns.addEventListener('click', () => {
-    gameBoard.makeMove(i, 'X');
-    squaresEvents[i].textContent = 'X';
+    game.handleSqclick(i);
+    game.switchPlayer();
   });
 });
 
