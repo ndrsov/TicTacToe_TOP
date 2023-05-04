@@ -29,6 +29,11 @@ p {
   margin: 4rem;
 }
 
+.board {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
 .square {
   background: #fff;
   border: 1px solid #999;
