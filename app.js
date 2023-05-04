@@ -106,6 +106,7 @@ const game = (() => {
 // DOM Elements
 const mainBoard = document.getElementById('main-board');
 const resetBtn = document.getElementById('reset');
+const playerDisplay = document.getElementById('player-display');
 
 game.renderBoard();
 
@@ -122,3 +123,5 @@ resetBtn.addEventListener('click', () => {
   game.restart();
   squaresEvents.forEach((el) => (el.textContent = ''));
 });
+
+playerDisplay.textContent = `${game.currentPlayer.getName()} with the ${game.currentPlayer.getMarker()}'s`;
