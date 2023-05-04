@@ -102,3 +102,23 @@ const game = (() => {
     renderBoard,
   };
 })();
+
+// DOM Elements
+const mainBoard = document.getElementById('main-board');
+const resetBtn = document.getElementById('reset');
+
+game.renderBoard();
+
+const squaresEvents = document.querySelectorAll('.square');
+
+squaresEvents.forEach((btns, i) => {
+  btns.addEventListener('click', () => {
+    gameBoard.makeMove(i, 'X');
+    squaresEvents[i].textContent = 'X';
+  });
+});
+
+resetBtn.addEventListener('click', () => {
+  game.restart();
+  squaresEvents.forEach((el) => (el.textContent = ''));
+});
