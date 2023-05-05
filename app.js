@@ -90,7 +90,7 @@ const game = (() => {
 
   const handleSqclick = (index) => {
     const board = gameBoard.getBoard();
-    if (!board[index]) {
+    if (!board[index] && !checkForWinner()) {
       const marker = currentPlayer.getMarker();
       gameBoard.makeMove(index, marker);
       squaresEvents[index].textContent = marker;
@@ -125,6 +125,21 @@ const squaresEvents = document.querySelectorAll('.square');
 squaresEvents.forEach((btns, i) => {
   btns.addEventListener('click', () => {
     game.handleSqclick(i);
+    game.checkForWinner();
+    const result = game.checkForWinner();
+    switch (result) {
+      case 'X':
+        playerDisplay.textContent = 'X wins! Player 1 is the champion';
+        break;
+      case 'O':
+        playerDisplay.textContent = '0 wins! Player 2 is the champion';
+        break;
+      case 'tie':
+        playerDisplay.textContent = 'Draw! Nobogy winds';
+        break;
+      default:
+        break;
+    }
   });
 });
 
