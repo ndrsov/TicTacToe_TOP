@@ -88,11 +88,14 @@ const game = (() => {
   };
 
   const handleSqclick = (index) => {
-    const marker = currentPlayer.getMarker();
-    gameBoard.makeMove(index, marker);
-    squaresEvents[index].textContent = marker;
-    switchPlayer();
-    playerDisplay.textContent = currentPlayer.getName();
+    const board = gameBoard.getBoard();
+    if (!board[index]) {
+      const marker = currentPlayer.getMarker();
+      gameBoard.makeMove(index, marker);
+      squaresEvents[index].textContent = marker;
+      switchPlayer();
+      playerDisplay.textContent = currentPlayer.getName();
+    }
   };
 
   return {
