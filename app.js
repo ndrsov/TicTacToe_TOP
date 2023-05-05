@@ -20,6 +20,7 @@ const gameBoard = (() => {
 const player = (name, marker) => {
   const getName = () => name;
   const getMarker = () => marker;
+  let score = 0;
   return { getName, getMarker };
 };
 
