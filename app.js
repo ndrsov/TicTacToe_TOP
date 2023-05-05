@@ -91,6 +91,7 @@ const game = (() => {
     const marker = currentPlayer.getMarker();
     gameBoard.makeMove(index, marker);
     squaresEvents[index].textContent = marker;
+    switchPlayer();
     playerDisplay.textContent = currentPlayer.getName();
   };
 
@@ -120,7 +121,6 @@ const squaresEvents = document.querySelectorAll('.square');
 squaresEvents.forEach((btns, i) => {
   btns.addEventListener('click', () => {
     game.handleSqclick(i);
-    game.switchPlayer();
   });
 });
 
