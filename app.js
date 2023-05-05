@@ -75,6 +75,7 @@ const game = (() => {
   const restart = () => {
     gameBoard.clearBoard();
     currentPlayer = playerOne;
+    playerDisplay.textContent = currentPlayer.getName();
   };
 
   const renderBoard = () => {
