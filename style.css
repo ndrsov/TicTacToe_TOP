@@ -9,6 +9,15 @@ html {
   margin: 0;
   padding: 0;
 }
+
+:root {
+  --prussian-blue-50: #eef8ff;
+  --prussian-blue-400: #20bdff;
+  --prussian-blue-600: #0083df;
+  --prussian-blue-900: #00487a;
+  --prussian-blue-950: #002b4d;
+}
+
 body {
   font-family: sans-serif;
 }
