@@ -133,7 +133,7 @@ squaresEvents.forEach((btns, i) => {
         playerDisplay.textContent = 'X wins! Player 1 is the champion';
         break;
       case 'O':
-        playerDisplay.textContent = '0 wins! Player 2 is the champion';
+        playerDisplay.textContent = 'O wins! Player 2 is the champion';
         break;
       case 'tie':
         playerDisplay.textContent = 'Draw! Nobogy winds';
