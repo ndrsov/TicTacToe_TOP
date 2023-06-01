@@ -103,3 +103,29 @@ p {
   text-align: center;
   width: 34px;
 }
+
+button {
+  appearance: none;
+  outline: none;
+  border: none;
+}
+
+.btn {
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  font-weight: bold;
+  color: #fff;
+  background-color: var(--prussian-blue-600);
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: var(--prussian-blue-400);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
