@@ -35,17 +35,17 @@ p {
 
 .container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   margin: 2rem;
+  height: 70vh;
 }
 
 .game-information {
   background-color: var(--prussian-blue-900);
-  margin-bottom: 2rem;
   padding: 1rem;
-  min-width: 35%;
+  width: 400px;
+  height: 306px;
   border-radius: 20px;
 }
 
@@ -87,21 +87,22 @@ p {
 .board {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin: 2rem;
 }
 
 .square {
-  background: #fff;
-  border: 1px solid #999;
-  float: left;
-  font-size: 24px;
-  font-weight: bold;
-  line-height: 34px;
-  height: 34px;
-  margin-right: -1px;
-  margin-top: -1px;
-  padding: 0;
+  background: var(--prussian-blue-50);
+  border: 2px solid var(--prussian-blue-900);
+  color: var(--prussian-blue-950);
+  font-size: 5rem;
   text-align: center;
-  width: 34px;
+  font-weight: bold;
+  line-height: 102px;
+  height: 102px;
+  width: 102px;
+  margin-right: -2px;
+  margin-top: -2px;
+  padding: 0;
 }
 
 button {
@@ -121,8 +122,7 @@ button {
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.btn:hover,
-.btn:focus {
+.btn:hover {
   background-color: var(--prussian-blue-400);
 }
 
