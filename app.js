@@ -17,10 +17,53 @@ const gameBoard = (() => {
   return { getBoard, makeMove, clearBoard };
 })();
 
+const scoreBoard = (() => {
+  let score = {
+    player1: 0,
+    player2: 0,
+  };
+
+  let rounds = 0;
+
+  const updateScore = (winner) => {
+    if (winner === 'player1') {
+      score.player1++;
+    } else if (winner === 'player2') {
+      score.player2++;
+    }
+  };
+
+  const getScore = () => {
+    return score;
+  };
+  const incrementRounds = () => {
+    rounds++;
+  };
+
+  const getRounds = () => {
+    return rounds;
+  };
+
+  const resetScore = () => {
+    score = {
+      player1: 0,
+      player2: 0,
+    };
+    rounds = 0;
+  };
+
+  return {
+    updateScore,
+    getScore,
+    incrementRounds,
+    getRounds,
+    resetScore,
+  };
+})();
+
 const player = (name, marker) => {
   const getName = () => name;
   const getMarker = () => marker;
-  let score = 0;
   return { getName, getMarker };
 };
 
