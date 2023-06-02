@@ -17,61 +17,21 @@ const gameBoard = (() => {
   return { getBoard, makeMove, clearBoard };
 })();
 
-const scoreBoard = (() => {
-  let score = {
-    player1: 0,
-    player2: 0,
-  };
-
-  let rounds = 0;
-
-  const updateScore = (winner) => {
-    if (winner === 'player1') {
-      score.player1++;
-    } else if (winner === 'player2') {
-      score.player2++;
-    }
-  };
-
-  const getScore = () => {
-    return score;
-  };
-  const incrementRounds = () => {
-    rounds++;
-  };
-
-  const getRounds = () => {
-    return rounds;
-  };
-
-  const resetScore = () => {
-    score = {
-      player1: 0,
-      player2: 0,
-    };
-    rounds = 0;
-  };
-
-  return {
-    updateScore,
-    getScore,
-    incrementRounds,
-    getRounds,
-    resetScore,
-  };
-})();
-
-const player = (name, marker) => {
+const player = (name, marker, score) => {
   const getName = () => name;
   const getMarker = () => marker;
-  return { getName, getMarker };
+  const getScore = () => score;
+  const increaseScore = () => score++;
+  const resetScore = () => (score = 0);
+  return { getName, getMarker, getScore, increaseScore, resetScore };
 };
 
 const game = (() => {
-  const playerOne = player('Player 1', 'X');
-  const playerTwo = player('Player 2', 'O');
+  const playerOne = player('Player 1', 'X', 0);
+  const playerTwo = player('Player 2', 'O', 0);
   let currentPlayer = playerOne;
   let gameOver = false;
+  let rounds = 0;
 
   const switchPlayer = () => {
     currentPlayer = currentPlayer === playerOne ? playerTwo : playerOne;
@@ -120,6 +80,8 @@ const game = (() => {
     gameBoard.clearBoard();
     currentPlayer = playerOne;
     playerDisplay.textContent = currentPlayer.getName();
+    playerOne.resetScore();
+    playerTwo.resetScore();
   };
 
   const renderBoard = () => {
@@ -143,6 +105,18 @@ const game = (() => {
     }
   };
 
+  const updateScore = (winner) => {
+    if (winner === 'X') {
+      score.playerX++;
+    } else if (winner === 'O') {
+      score.playerO++;
+    }
+  };
+
+  const incrementRounds = () => {
+    rounds++;
+  };
+
   return {
     playerOne,
     playerTwo,
@@ -150,9 +124,12 @@ const game = (() => {
     switchPlayer,
     checkForWinner,
     gameOver,
+    rounds,
     restart,
     renderBoard,
     handleSqclick,
+    incrementRounds,
+    updateScore,
   };
 })();
 
@@ -161,6 +138,9 @@ const mainBoard = document.getElementById('main-board');
 const resetBtn = document.getElementById('reset');
 const playerDisplay = document.getElementById('player-display');
 playerDisplay.textContent = game.currentPlayer.getName();
+const player1Score = document.querySelector('.p1-score+span');
+
+const player2Score = document.querySelector('.p2-score+span');
 
 game.renderBoard();
 
